@@ -1,6 +1,7 @@
 # backtrader_codex
 
 Ce dépôt contient un exemple minimal d'utilisation de [Backtrader](https://www.backtrader.com/) pour analyser des données financières. La stratégie définie dans `strategy.py` affiche plusieurs indicateurs techniques pour chaque bougie d'un fichier CSV.
+Un indicateur personnalisé appelé **ConfluenceOscillator** combine RSI, CCI, MACD, ATR et les bandes de Bollinger selon des pondérations prédéfinies.
 
 ## Installation
 
@@ -31,5 +32,4 @@ Exécutez simplement :
 ```bash
 python strategy.py
 ```
-
-Le script charge le fichier de données, exécute la stratégie puis affiche un graphique.
+Le script charge le fichier de données puis affiche dans la console les valeurs des indicateurs ainsi que l'oscillateur de confluence.
