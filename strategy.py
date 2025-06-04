@@ -2,7 +2,11 @@ from __future__ import (absolute_import, division, print_function,
                         unicode_literals)
 
 import datetime
+import matplotlib
+matplotlib.use("Agg")
 import backtrader as bt
+
+from indicators import ConfluenceOscillator
 
 
 class TestStrategy(bt.Strategy):
@@ -13,6 +17,7 @@ class TestStrategy(bt.Strategy):
         self.macd = bt.indicators.MACD(self.data.close)
         self.bollinger = bt.indicators.BollingerBands(self.data.close, period=20,
                                                       devfactor=2)
+        self.confluence = ConfluenceOscillator(self.data)
 
     def log(self, txt, dt=None):
         """Fonction d'enregistrement pour la stratégie"""
@@ -28,7 +33,8 @@ class TestStrategy(bt.Strategy):
             f"MACD: {self.macd.macd[0]:.5f}, "
             f"BB_Mid: {self.bollinger.mid[0]:.5f}, "
             f"BB_Top: {self.bollinger.top[0]:.5f}, "
-            f"BB_Bot: {self.bollinger.bot[0]:.5f}"
+            f"BB_Bot: {self.bollinger.bot[0]:.5f}, "
+            f"Confluence: {self.confluence.osc[0]:.4f}"
         )
 
 
@@ -56,4 +62,4 @@ if __name__ == "__main__":
     cerebro.adddata(data)
     cerebro.broker.setcash(10000.0)
     cerebro.run()
-    cerebro.plot()
+    # Les environnements sans interface graphique ne peuvent pas afficher les graphiques
