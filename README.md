@@ -32,4 +32,4 @@ Exécutez simplement :
 ```bash
 python strategy.py
 ```
-Le script charge le fichier de données puis affiche dans la console les valeurs des indicateurs ainsi que l'oscillateur de confluence.
+Le script charge le fichier de données puis affiche dans la console les valeurs des indicateurs ainsi que l'oscillateur de confluence. Un graphique est généré et enregistré sous le nom `plot.png` avec uniquement le prix et le **ConfluenceOscillator**.
